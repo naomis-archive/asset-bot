@@ -1,0 +1,40 @@
+{
+  "name": "outfit-of-the-day",
+  "version": "1.0.0",
+  "description": "A li'l bot to play with my wardrobe",
+  "main": "prod/index.js",
+  "scripts": {
+    "prebuild": "rm -rf prod",
+    "build": "tsc",
+    "lint": "eslint src --max-warnings 0",
+    "start": "node -r dotenv/config prod/index.js",
+    "test": "echo 'no tests yet'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naomi-lgbt/outfit-of-the-day.git"
+  },
+  "author": "Naomi Carrigan",
+  "license": "AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/naomi-lgbt/outfit-of-the-day/issues"
+  },
+  "homepage": "https://github.com/naomi-lgbt/outfit-of-the-day#readme",
+  "devDependencies": {
+    "@types/node-schedule": "^2.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "eslint": "^8.31.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.4",
+    "eslint-plugin-jsdoc": "^39.6.4",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.8.2",
+    "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "node-schedule": "^2.1.1"
+  }
+}
