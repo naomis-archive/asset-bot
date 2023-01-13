@@ -1,12 +1,13 @@
-# Project Name
+# Asset Bot
 
-Project Description
+This is a bot that offers commands to see various Naomi assets right on Discord - art, emotes, game screenshots, and outfits.
+
+> **Warning**
+> While the assets are displayed for your reference (such as for fan art), the assets still belong to Naomi. Please do not redistribute or repurpose them.
 
 ## Live Version
 
-This page is not yet deployed.
-
-<!--This page is currently deployed. [View the live website.]()-->
+[Add the bot to your server!](https://discord.com/api/oauth2/authorize?client_id=1063327634639032340&permissions=0&scope=bot%20applications.commands)
 
 ## Feedback and Bugs
 
