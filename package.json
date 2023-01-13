@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/naomi-lgbt/outfit-of-the-day#readme",
   "devDependencies": {
+    "@types/node-schedule": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
     "eslint": "^8.31.0",
@@ -32,6 +33,8 @@
     "typescript": "^4.9.4"
   },
   "dependencies": {
-    "dotenv": "^16.0.3"
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3",
+    "node-schedule": "^2.1.1"
   }
 }
