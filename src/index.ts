@@ -1,27 +1,22 @@
-import {
-  Client,
-  GatewayIntentBits,
-  REST,
-  Routes,
-  SlashCommandBuilder,
-} from "discord.js";
+import { Client, GatewayIntentBits, REST, Routes } from "discord.js";
 import { scheduleJob } from "node-schedule";
 
+import { CommandLogicMap } from "./config/CommandLogicMap";
+import { Commands } from "./config/Commands";
+import { defaultEmbed } from "./modules/defaultEmbed";
 import { getOutfit } from "./modules/getOutfit";
 
 async () => {
   const bot = new Client({ intents: [GatewayIntentBits.Guilds] });
 
   bot.on("interactionCreate", async (interaction) => {
-    if (
-      !interaction.isChatInputCommand() ||
-      interaction.commandName !== "outfit"
-    ) {
+    if (!interaction.isChatInputCommand()) {
       return;
     }
     await interaction.deferReply();
-    const outfit = await getOutfit();
-    await interaction.editReply({ embeds: [outfit] });
+    const embed =
+      (await CommandLogicMap[interaction.commandName]()) || defaultEmbed;
+    await interaction.editReply({ embeds: [embed] });
   });
 
   bot.on("ready", async () => {
@@ -37,12 +32,7 @@ async () => {
         "778130114772598785"
       ),
       {
-        body: [
-          new SlashCommandBuilder()
-            .setName("outfit")
-            .setDescription("Get a random outfit.")
-            .toJSON(),
-        ],
+        body: Commands,
       }
     );
     // run daily at 9AM
