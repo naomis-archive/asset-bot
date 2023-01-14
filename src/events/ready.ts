@@ -20,8 +20,8 @@ export const ready = async (bot: Client) => {
   await rest.put(Routes.applicationCommands(bot.user?.id || "oopsie"), {
     body: Commands,
   });
-  // run daily at 9AM
-  scheduleJob("0 0 9 * * *", async () => {
+  // run daily at 7AM
+  scheduleJob("0 0 7 * * *", async () => {
     const guild = bot.guilds.resolve("778130114772598785");
     if (!guild) {
       return;
