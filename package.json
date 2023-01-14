@@ -22,6 +22,7 @@
   "homepage": "https://github.com/naomi-lgbt/outfit-of-the-day#readme",
   "devDependencies": {
     "@types/node-schedule": "^2.1.0",
+    "@types/uuid": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
     "eslint": "^8.31.0",
@@ -36,6 +37,7 @@
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
     "node-schedule": "^2.1.1",
+    "uuid": "^9.0.0",
     "winston": "^3.8.2"
   }
 }

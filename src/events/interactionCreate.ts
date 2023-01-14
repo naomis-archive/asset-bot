@@ -1,7 +1,9 @@
-import { Interaction } from "discord.js";
+import { ChatInputCommandInteraction, Interaction } from "discord.js";
 
 import { CommandLogicMap } from "../config/CommandLogicMap";
 import { defaultEmbed } from "../modules/defaultEmbed";
+import { errorEmbed } from "../modules/errorEmbed";
+import { errorHandler } from "../utils/errorHandler";
 
 /**
  * Handles the interaction create event - runs the target command.
@@ -9,11 +11,18 @@ import { defaultEmbed } from "../modules/defaultEmbed";
  * @param {Interaction} interaction The interaction payload from Discord.
  */
 export const interactionCreate = async (interaction: Interaction) => {
-  if (!interaction.isChatInputCommand()) {
-    return;
+  try {
+    if (!interaction.isChatInputCommand()) {
+      return;
+    }
+    await interaction.deferReply();
+    const embed =
+      (await CommandLogicMap[interaction.commandName]()) || defaultEmbed;
+    await interaction.editReply({ embeds: [embed] });
+  } catch (err) {
+    const id = await errorHandler("interactionCreate", err);
+    await (interaction as ChatInputCommandInteraction).editReply({
+      embeds: [errorEmbed(id)],
+    });
   }
-  await interaction.deferReply();
-  const embed =
-    (await CommandLogicMap[interaction.commandName]()) || defaultEmbed;
-  await interaction.editReply({ embeds: [embed] });
 };
