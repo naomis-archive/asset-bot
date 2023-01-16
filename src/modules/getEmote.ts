@@ -20,9 +20,7 @@ export const getEmote = async (): Promise<EmbedBuilder> => {
 
     const embed = new EmbedBuilder();
     embed.setTitle(emote.name);
-    embed.setImage(
-      `https://www.naomi.lgbt/assets/img/emotes/${emote.fileName}`
-    );
+    embed.setImage(`https://cdn.naomi.lgbt/emotes/${emote.fileName}`);
     embed.setFooter({
       text: `Donate so we can get more? https://donate.naomi.lgbt/`,
       iconURL: `https://cdn.nhcarrigan.com/profile.png`,
