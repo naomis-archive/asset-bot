@@ -21,9 +21,7 @@ export const getPortrait = async (): Promise<EmbedBuilder> => {
 
     const embed = new EmbedBuilder();
     embed.setTitle("Naomi Art~!");
-    embed.setImage(
-      `https://www.naomi.lgbt/assets/img/art/${portrait.fileName}`
-    );
+    embed.setImage(`https://cdn.naomi.lgbt/art/${portrait.fileName}`);
     embed.setDescription(`By [${portrait.artist}](${portrait.url})`);
     embed.setFooter({
       text: `Donate so we can get more? https://donate.naomi.lgbt/`,

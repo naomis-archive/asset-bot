@@ -20,9 +20,7 @@ export const getAdventure = async (): Promise<EmbedBuilder> => {
 
     const embed = new EmbedBuilder();
     embed.setTitle(adventure.game);
-    embed.setImage(
-      `https://www.naomi.lgbt/assets/img/games/${adventure.fileName}`
-    );
+    embed.setImage(`https://cdn.naomi.lgbt/games/${adventure.fileName}`);
     embed.setFooter({
       text: `Donate so we can get more? https://donate.naomi.lgbt/`,
       iconURL: `https://cdn.nhcarrigan.com/profile.png`,
