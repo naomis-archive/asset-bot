@@ -1,5 +1,7 @@
 import { SlashCommandBuilder } from "discord.js";
 
+import { ReferenceData } from "./ReferenceData";
+
 export const Commands = [
   new SlashCommandBuilder()
     .setName("outfit")
@@ -24,5 +26,18 @@ export const Commands = [
   new SlashCommandBuilder()
     .setName("tattoos")
     .setDescription("Get a random tattoo.")
+    .toJSON(),
+  new SlashCommandBuilder()
+    .setName("reference")
+    .setDescription("Get a reference for Naomi art.")
+    .addStringOption((option) =>
+      option
+        .setName("type")
+        .setDescription("The type of reference to get.")
+        .setRequired(true)
+        .addChoices(
+          ...ReferenceData.map((ref) => ({ name: ref.name, value: ref.name }))
+        )
+    )
     .toJSON(),
 ];

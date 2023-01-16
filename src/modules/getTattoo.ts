@@ -20,6 +20,9 @@ export const getTattoo = async (): Promise<EmbedBuilder> => {
 
     const embed = new EmbedBuilder();
     embed.setTitle(tattoo.name);
+    embed.setDescription(
+      "Naomi's tattoos can be hidden or visible at her whim."
+    );
     embed.setImage(`https://cdn.naomi.lgbt/ref/tattoos/${tattoo.fileName}`);
     embed.setFooter({
       text: `Donate so we can get more? https://donate.naomi.lgbt/`,
