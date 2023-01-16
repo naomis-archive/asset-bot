@@ -18,7 +18,7 @@ export const interactionCreate = async (interaction: Interaction) => {
     }
     if (interaction.commandName === "reference") {
       await interaction.reply({
-        embeds: [getReference(interaction.options.getString("target", true))],
+        embeds: [getReference(interaction.options.getString("type", true))],
       });
       return;
     }
