@@ -21,4 +21,8 @@ export const Commands = [
     .setName("about")
     .setDescription("Get information about this bot.")
     .toJSON(),
+  new SlashCommandBuilder()
+    .setName("tattoos")
+    .setDescription("Get a random tattoo.")
+    .toJSON(),
 ];
