@@ -28,7 +28,7 @@ export const ready = async (bot: Client) => {
       if (!guild) {
         return;
       }
-      const channel = guild.channels.resolve("1063307149062713405");
+      const channel = guild.channels.resolve("1070194415013994506");
       if (!channel || !("send" in channel)) {
         return;
       }
