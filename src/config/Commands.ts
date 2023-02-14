@@ -28,6 +28,10 @@ export const Commands = [
     .setDescription("Get a random tattoo.")
     .toJSON(),
   new SlashCommandBuilder()
+    .setName("koikatsu")
+    .setDescription("Get a random Koikatsu scene featuring Naomi.")
+    .toJSON(),
+  new SlashCommandBuilder()
     .setName("reference")
     .setDescription("Get a reference for Naomi art.")
     .addStringOption((option) =>
