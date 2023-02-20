@@ -5,6 +5,6 @@ export const defaultEmbed = new EmbedBuilder()
   .setDescription("Something went wrong!")
   .setColor(0xff0000)
   .setFooter({
-    text: "Donate to help us fix it? https://donate.naomi.lgbt",
+    text: "Join our server: https://discord.gg/nhcarrigan",
     iconURL: "https://cdn.nhcarrigan.com/profile.png",
   });

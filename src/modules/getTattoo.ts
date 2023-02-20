@@ -25,7 +25,7 @@ export const getTattoo = async (): Promise<EmbedBuilder> => {
     );
     embed.setImage(`https://cdn.naomi.lgbt/ref/tattoos/${tattoo.fileName}`);
     embed.setFooter({
-      text: `Donate so we can get more? https://donate.naomi.lgbt/`,
+      text: `Join our server: https://discord.gg/nhcarrigan`,
       iconURL: `https://cdn.nhcarrigan.com/profile.png`,
     });
 
