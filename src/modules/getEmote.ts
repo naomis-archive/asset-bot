@@ -22,7 +22,7 @@ export const getEmote = async (): Promise<EmbedBuilder> => {
     embed.setTitle(emote.name);
     embed.setImage(`https://cdn.naomi.lgbt/emotes/${emote.fileName}`);
     embed.setFooter({
-      text: `Donate so we can get more? https://donate.naomi.lgbt/`,
+      text: `Join our server: https://discord.gg/nhcarrigan`,
       iconURL: `https://cdn.nhcarrigan.com/profile.png`,
     });
 

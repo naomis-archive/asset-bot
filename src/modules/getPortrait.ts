@@ -24,7 +24,7 @@ export const getPortrait = async (): Promise<EmbedBuilder> => {
     embed.setImage(`https://cdn.naomi.lgbt/art/${portrait.fileName}`);
     embed.setDescription(`By [${portrait.artist}](${portrait.url})`);
     embed.setFooter({
-      text: `Donate so we can get more? https://donate.naomi.lgbt/`,
+      text: `Join our server: https://discord.gg/nhcarrigan`,
       iconURL: `https://cdn.nhcarrigan.com/profile.png`,
     });
 
