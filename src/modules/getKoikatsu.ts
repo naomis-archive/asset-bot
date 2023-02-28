@@ -28,7 +28,7 @@ export const getKoikatsu = async (): Promise<EmbedBuilder> => {
     embed.setTitle(getPoseName(koikatsu));
     embed.setImage(`https://cdn.naomi.lgbt/koikatsu/${koikatsu}`);
     embed.setFooter({
-      text: `Join our server: https://discord.gg/nhcarrigan`,
+      text: `Join our server: https://chat.naomi.lgbt`,
       iconURL: `https://cdn.nhcarrigan.com/profile.png`,
     });
 
