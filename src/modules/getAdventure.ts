@@ -22,7 +22,7 @@ export const getAdventure = async (): Promise<EmbedBuilder> => {
     embed.setTitle(adventure.game);
     embed.setImage(`https://cdn.naomi.lgbt/games/${adventure.fileName}`);
     embed.setFooter({
-      text: `Join our server: https://discord.gg/nhcarrigan`,
+      text: `Join our server: https://chat.naomi.lgbt`,
       iconURL: `https://cdn.nhcarrigan.com/profile.png`,
     });
 

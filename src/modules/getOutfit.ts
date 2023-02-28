@@ -23,7 +23,7 @@ export const getOutfit = async (): Promise<EmbedBuilder> => {
     embed.setDescription(outfit.description);
     embed.setImage(`https://cdn.naomi.lgbt/outfits/${outfit.fileName}`);
     embed.setFooter({
-      text: `Join our server: https://discord.gg/nhcarrigan`,
+      text: `Join our server: https://chat.naomi.lgbt`,
       iconURL: `https://cdn.nhcarrigan.com/profile.png`,
     });
 
