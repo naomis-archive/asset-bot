@@ -15,6 +15,6 @@ export const getFileList = async (prefix: string): Promise<string[]> => {
   const parsedXML = await parser.parseStringPromise(rawText);
   const fileList: string[] = parsedXML.ListBucketResult.Contents.map(
     (file: { Key: string[] }) => file.Key[0].split("/").slice(-1)[0]
-  );
+  ).filter((el: string) => el);
   return fileList;
 };
