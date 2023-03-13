@@ -10,14 +10,47 @@ export const Commands = [
   new SlashCommandBuilder()
     .setName("adventure")
     .setDescription("Get a random game screenshot.")
+    .addStringOption((option) =>
+      option
+        .setName("target")
+        .setDescription("Whose adventure do you want to see?")
+        .setRequired(true)
+        .addChoices(
+          { name: "Naomi", value: "naomi" },
+          { name: "Becca", value: "becca" },
+          { name: "Rosalia", value: "rosalia" }
+        )
+    )
     .toJSON(),
   new SlashCommandBuilder()
     .setName("emote")
     .setDescription("Get a random emote.")
+    .addStringOption((option) =>
+      option
+        .setName("target")
+        .setDescription("Whose emotes do you want to see?")
+        .setRequired(true)
+        .addChoices(
+          { name: "Naomi", value: "naomi" },
+          { name: "Becca", value: "becca" }
+        )
+    )
     .toJSON(),
   new SlashCommandBuilder()
     .setName("portrait")
     .setDescription("Get a random artwork.")
+    .addStringOption((option) =>
+      option
+        .setName("target")
+        .setDescription("Whose art do you want to see?")
+        .setRequired(true)
+        .addChoices(
+          { name: "Naomi", value: "naomi" },
+          { name: "Becca", value: "becca" },
+          { name: "Rosalia", value: "rosalia" },
+          { name: "Beccalia", value: "beccalia" }
+        )
+    )
     .toJSON(),
   new SlashCommandBuilder()
     .setName("about")
@@ -30,6 +63,18 @@ export const Commands = [
   new SlashCommandBuilder()
     .setName("koikatsu")
     .setDescription("Get a random Koikatsu scene featuring Naomi.")
+    .addStringOption((option) =>
+      option
+        .setName("target")
+        .setDescription("Whose pses do you want to see?")
+        .setRequired(true)
+        .addChoices(
+          { name: "Naomi", value: "naomi" },
+          { name: "Becca", value: "becca" },
+          { name: "Rosalia", value: "rosalia" },
+          { name: "Beccalia", value: "beccalia" }
+        )
+    )
     .toJSON(),
   new SlashCommandBuilder()
     .setName("reference")
