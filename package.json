@@ -22,7 +22,7 @@
   "homepage": "https://github.com/naomi-lgbt/outfit-of-the-day#readme",
   "engines": {
     "node": "18.15.0",
-    "npm": "9.6.2"
+    "npm": "9.6.3"
   },
   "devDependencies": {
     "@types/node-schedule": "2.1.0",
