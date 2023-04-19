@@ -1,1 +1,1 @@
-export type Target = "naomi" | "becca" | "rosalia" | "beccalia";
+export type Target = "naomi" | "becca" | "rosalia" | "beccalia" | "novas";

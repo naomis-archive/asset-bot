@@ -62,17 +62,18 @@ export const Commands = [
     .toJSON(),
   new SlashCommandBuilder()
     .setName("koikatsu")
-    .setDescription("Get a random Koikatsu scene featuring Naomi.")
+    .setDescription("Get a random Koikatsu scene..")
     .addStringOption((option) =>
       option
         .setName("target")
-        .setDescription("Whose pses do you want to see?")
+        .setDescription("Whose poses do you want to see?")
         .setRequired(true)
         .addChoices(
           { name: "Naomi", value: "naomi" },
           { name: "Becca", value: "becca" },
           { name: "Rosalia", value: "rosalia" },
-          { name: "Beccalia", value: "beccalia" }
+          { name: "Beccalia", value: "beccalia" },
+          { name: "Novas", value: "novas" }
         )
     )
     .toJSON(),
