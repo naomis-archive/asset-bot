@@ -4,6 +4,7 @@ import { Emote } from "../interfaces/Emote";
 import { Target } from "../interfaces/Target";
 import { errorHandler } from "../utils/errorHandler";
 import { getFileList } from "../utils/getFileList";
+import { isBecca, isNaomi } from "../utils/typeGuards";
 
 import { defaultEmbed } from "./defaultEmbed";
 import { errorEmbed } from "./errorEmbed";
@@ -16,7 +17,7 @@ import { errorEmbed } from "./errorEmbed";
  */
 export const getEmote = async (target: Target): Promise<EmbedBuilder> => {
   try {
-    if (target === "naomi") {
+    if (isNaomi(target)) {
       const emoteData = await fetch(
         "https://www.naomi.lgbt/assets/data/emotes.json"
       );
@@ -34,7 +35,7 @@ export const getEmote = async (target: Target): Promise<EmbedBuilder> => {
       return embed;
     }
 
-    if (target === "becca") {
+    if (isBecca(target)) {
       const fileList = await getFileList(`${target}/emotes`);
       const fileName = fileList[Math.floor(Math.random() * fileList.length)];
       const embed = new EmbedBuilder();

@@ -4,6 +4,7 @@ import { Adventure } from "../interfaces/Adventure";
 import { Target } from "../interfaces/Target";
 import { errorHandler } from "../utils/errorHandler";
 import { getFileList } from "../utils/getFileList";
+import { isBecca, isNaomi, isRosalia } from "../utils/typeGuards";
 
 import { defaultEmbed } from "./defaultEmbed";
 import { errorEmbed } from "./errorEmbed";
@@ -16,7 +17,7 @@ import { errorEmbed } from "./errorEmbed";
  */
 export const getAdventure = async (target: Target): Promise<EmbedBuilder> => {
   try {
-    if (target === "naomi") {
+    if (isNaomi(target)) {
       const adventureData = await fetch(
         "https://www.naomi.lgbt/assets/data/adventures.json"
       );
@@ -35,7 +36,7 @@ export const getAdventure = async (target: Target): Promise<EmbedBuilder> => {
       return embed;
     }
 
-    if (target === "becca" || target === "rosalia") {
+    if (isBecca(target) || isRosalia(target)) {
       const fileList = await getFileList(`${target}/games`);
       const fileName = fileList[Math.floor(Math.random() * fileList.length)];
       const embed = new EmbedBuilder();

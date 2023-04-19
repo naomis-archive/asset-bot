@@ -4,6 +4,7 @@ import { ArtData } from "../config/ArtData";
 import { Portrait } from "../interfaces/Portrait";
 import { Target } from "../interfaces/Target";
 import { errorHandler } from "../utils/errorHandler";
+import { isBecca, isBeccalia, isNaomi, isRosalia } from "../utils/typeGuards";
 
 import { defaultEmbed } from "./defaultEmbed";
 import { errorEmbed } from "./errorEmbed";
@@ -16,7 +17,7 @@ import { errorEmbed } from "./errorEmbed";
  */
 export const getPortrait = async (target: Target): Promise<EmbedBuilder> => {
   try {
-    if (target === "naomi") {
+    if (isNaomi(target)) {
       const portraitData = await fetch(
         "https://www.naomi.lgbt/assets/data/portraits.json"
       );
@@ -36,7 +37,7 @@ export const getPortrait = async (target: Target): Promise<EmbedBuilder> => {
       return embed;
     }
 
-    if (["becca", "rosalia", "beccalia"].includes(target)) {
+    if (isBecca(target) || isRosalia(target) || isBeccalia(target)) {
       const portraitData = ArtData[target];
       const portrait =
         portraitData[Math.floor(Math.random() * portraitData.length)];

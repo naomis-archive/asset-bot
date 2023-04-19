@@ -3,6 +3,7 @@ import { EmbedBuilder } from "@discordjs/builders";
 import { Target } from "../interfaces/Target";
 import { errorHandler } from "../utils/errorHandler";
 import { getFileList } from "../utils/getFileList";
+import { isBecca, isBeccalia, isNovas, isRosalia } from "../utils/typeGuards";
 
 import { defaultEmbed } from "./defaultEmbed";
 import { errorEmbed } from "./errorEmbed";
@@ -39,7 +40,12 @@ export const getKoikatsu = async (target: Target): Promise<EmbedBuilder> => {
       return embed;
     }
 
-    if (["beccalia", "becca", "rosalia"].includes(target)) {
+    if (
+      isBecca(target) ||
+      isRosalia(target) ||
+      isBeccalia(target) ||
+      isNovas(target)
+    ) {
       const fileList = await getFileList(`${target}/koikatsu`);
       const fileName = fileList[Math.floor(Math.random() * fileList.length)];
       const embed = new EmbedBuilder();
