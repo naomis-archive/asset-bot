@@ -6,6 +6,6 @@
  */
 export const isValidTarget = (
   target: string
-): target is "naomi" | "becca" | "rosalia" | "beccalia" => {
-  return ["naomi", "becca", "rosalia", "beccalia"].includes(target);
+): target is "naomi" | "becca" | "rosalia" | "beccalia" | "novas" => {
+  return ["naomi", "becca", "rosalia", "beccalia", "novas"].includes(target);
 };
