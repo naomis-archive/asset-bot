@@ -5,11 +5,11 @@ import {
   TargetedCommandLogicMap,
 } from "../config/CommandLogicMap";
 import { ValidTargets } from "../config/ValidTargets";
-import { Target } from "../interfaces/Target";
 import { defaultEmbed } from "../modules/defaultEmbed";
 import { errorEmbed } from "../modules/errorEmbed";
 import { getReference } from "../modules/getReference";
 import { errorHandler } from "../utils/errorHandler";
+import { isValidTarget } from "../utils/isValidTarget";
 
 /**
  * Handles the interaction create event - runs the target command.
@@ -30,11 +30,7 @@ export const interactionCreate = async (interaction: Interaction) => {
     await interaction.deferReply();
     if (ValidTargets[interaction.commandName]) {
       const target = interaction.options.getString("target", true);
-      if (
-        !ValidTargets[interaction.commandName].includes(
-          target as "becca" | "naomi" | "rosalia" | "beccalia"
-        )
-      ) {
+      if (!isValidTarget(target)) {
         await interaction.editReply({
           embeds: [
             {
@@ -47,9 +43,8 @@ export const interactionCreate = async (interaction: Interaction) => {
       }
 
       const embed =
-        (await TargetedCommandLogicMap[interaction.commandName](
-          target as Target
-        )) || defaultEmbed;
+        (await TargetedCommandLogicMap[interaction.commandName](target)) ||
+        defaultEmbed;
       await interaction.editReply({ embeds: [embed] });
       return;
     }
