@@ -4,6 +4,7 @@ import { scheduleJob } from "node-schedule";
 import { Commands } from "../config/Commands";
 import { getOutfit } from "../modules/getOutfit";
 import { errorHandler } from "../utils/errorHandler";
+import { logHandler } from "../utils/logHandler";
 
 /**
  * Handles the on ready event - registers the commands and schedules the daily
@@ -13,7 +14,7 @@ import { errorHandler } from "../utils/errorHandler";
  */
 export const ready = async (bot: Client) => {
   try {
-    console.log(`Logged in as ${bot.user?.tag}!`);
+    logHandler.log("info", `Logged in as ${bot.user?.tag}!`);
 
     const rest = new REST({ version: "10" }).setToken(
       process.env.TOKEN || "what"
