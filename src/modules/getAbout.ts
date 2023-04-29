@@ -2,11 +2,10 @@ import { EmbedBuilder } from "discord.js";
 
 /**
  * Generates the help embed.
+ * Async just for type safety with the other functions.
  *
  * @returns {Promise<EmbedBuilder>} The help embed.
  */
-// We ignore this for type safety.
-// eslint-disable-next-line require-await
 export const getAbout = async (): Promise<EmbedBuilder> => {
   const embed = new EmbedBuilder();
   embed.setTitle("Naomi's Asset Bot");
@@ -25,5 +24,6 @@ export const getAbout = async (): Promise<EmbedBuilder> => {
         "If you like these assets, please consider [donating so we can get more~!](https://donate.naomi.lgbt)",
     },
   ]);
-  return embed;
+  const result = await new Promise<EmbedBuilder>(() => embed);
+  return result;
 };
