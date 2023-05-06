@@ -17,30 +17,15 @@ import { errorEmbed } from "./errorEmbed";
  */
 export const getEmote = async (target: Target): Promise<EmbedBuilder> => {
   try {
-    if (isNaomi(target)) {
-      const emoteData = await fetch(
-        "https://www.naomi.lgbt/assets/data/emotes.json"
-      );
-      const emotes: Emote[] = await emoteData.json();
-      const emote = emotes[Math.floor(Math.random() * emotes.length)];
-
+    if (isNaomi(target) || isBecca(target)) {
+      const fileList = await getFileList<Emote[]>(target, "emotes");
+      const file = fileList[Math.floor(Math.random() * fileList.length)];
+      const { fileName, name } = file;
       const embed = new EmbedBuilder();
-      embed.setTitle(emote.name);
-      embed.setImage(`https://cdn.naomi.lgbt/emotes/${emote.fileName}`);
-      embed.setFooter({
-        text: `Join our server: https://chat.naomi.lgbt`,
-        iconURL: `https://cdn.nhcarrigan.com/profile.png`,
-      });
-
-      return embed;
-    }
-
-    if (isBecca(target)) {
-      const fileList = await getFileList(`${target}/emotes`);
-      const fileName = fileList[Math.floor(Math.random() * fileList.length)];
-      const embed = new EmbedBuilder();
-      embed.setTitle(fileName.replace("Becca", ""));
-      embed.setDescription(`Art by [Starfazers](https://starfazers.art)`);
+      embed.setTitle(name);
+      if (target === "becca") {
+        embed.setDescription(`Art by [Starfazers](https://starfazers.art)`);
+      }
       embed.setImage(`https://cdn.naomi.lgbt/${target}/emotes/${fileName}`);
       embed.setFooter({
         text: `Join our server: https://chat.naomi.lgbt`,
