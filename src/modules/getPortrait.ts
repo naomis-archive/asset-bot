@@ -1,9 +1,9 @@
 import { EmbedBuilder } from "@discordjs/builders";
 
-import { ArtData } from "../config/ArtData";
 import { Portrait } from "../interfaces/Portrait";
 import { Target } from "../interfaces/Target";
 import { errorHandler } from "../utils/errorHandler";
+import { getFileList } from "../utils/getFileList";
 import { isBecca, isBeccalia, isNaomi, isRosalia } from "../utils/typeGuards";
 
 import { defaultEmbed } from "./defaultEmbed";
@@ -17,40 +17,29 @@ import { errorEmbed } from "./errorEmbed";
  */
 export const getPortrait = async (target: Target): Promise<EmbedBuilder> => {
   try {
-    if (isNaomi(target)) {
-      const portraitData = await fetch(
-        "https://www.naomi.lgbt/assets/data/portraits.json"
-      );
-      const portraits: Portrait[] = await portraitData.json();
-      const filtered = portraits.filter((el) => !el.spicy);
-      const portrait = filtered[Math.floor(Math.random() * filtered.length)];
-
-      const embed = new EmbedBuilder();
-      embed.setTitle("Naomi Art~!");
-      embed.setImage(`https://cdn.naomi.lgbt/art/${portrait.fileName}`);
-      embed.setDescription(`By [${portrait.artist}](${portrait.url})`);
-      embed.setFooter({
-        text: `Join our server: https://chat.naomi.lgbt`,
-        iconURL: `https://cdn.nhcarrigan.com/profile.png`,
-      });
-
-      return embed;
-    }
-
-    if (isBecca(target) || isRosalia(target) || isBeccalia(target)) {
-      const portraitData = ArtData[target];
+    if (
+      isNaomi(target) ||
+      isBecca(target) ||
+      isRosalia(target) ||
+      isBeccalia(target)
+    ) {
+      const portraitData = await getFileList<Portrait[]>(target, "portraits");
       const portrait =
         portraitData[Math.floor(Math.random() * portraitData.length)];
 
       const embed = new EmbedBuilder();
-      embed.setTitle(`${target[0].toUpperCase()}${target.slice(1)} Art~!`);
+      embed.setTitle(portrait.name);
+      embed.setDescription(portrait.alt);
       embed.setImage(
         `https://cdn.naomi.lgbt/${target}/art/${portrait.fileName.replace(
           /\s/g,
           "%20"
         )}`
       );
-      embed.setDescription(`By [${portrait.artist}](${portrait.artistUrl})`);
+      embed.addFields({
+        name: "Art By:",
+        value: `[${portrait.artist}](${portrait.url})`,
+      });
       embed.setFooter({
         text: `Join our server: https://chat.naomi.lgbt`,
         iconURL: `https://cdn.nhcarrigan.com/profile.png`,

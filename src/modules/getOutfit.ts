@@ -2,6 +2,7 @@ import { EmbedBuilder } from "@discordjs/builders";
 
 import { Outfit } from "../interfaces/Outfit";
 import { errorHandler } from "../utils/errorHandler";
+import { getFileList } from "../utils/getFileList";
 
 import { errorEmbed } from "./errorEmbed";
 
@@ -12,16 +13,13 @@ import { errorEmbed } from "./errorEmbed";
  */
 export const getOutfit = async (): Promise<EmbedBuilder> => {
   try {
-    const outfitData = await fetch(
-      "https://www.naomi.lgbt/assets/data/outfits.json"
-    );
-    const outfits: Outfit[] = await outfitData.json();
-    const outfit = outfits[Math.floor(Math.random() * outfits.length)];
+    const fileData = await getFileList<Outfit[]>("naomi", "outfits");
+    const outfit = fileData[Math.floor(Math.random() * fileData.length)];
 
     const embed = new EmbedBuilder();
     embed.setTitle(outfit.name);
     embed.setDescription(outfit.description);
-    embed.setImage(`https://cdn.naomi.lgbt/outfits/${outfit.fileName}`);
+    embed.setImage(`https://cdn.naomi.lgbt/naomi/outfits/${outfit.fileName}`);
     embed.setFooter({
       text: `Join our server: https://chat.naomi.lgbt`,
       iconURL: `https://cdn.nhcarrigan.com/profile.png`,

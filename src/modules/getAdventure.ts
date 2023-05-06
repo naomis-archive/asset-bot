@@ -17,35 +17,12 @@ import { errorEmbed } from "./errorEmbed";
  */
 export const getAdventure = async (target: Target): Promise<EmbedBuilder> => {
   try {
-    if (isNaomi(target)) {
-      const adventureData = await fetch(
-        "https://www.naomi.lgbt/assets/data/adventures.json"
-      );
-      const adventures: Adventure[] = await adventureData.json();
-      const adventure =
-        adventures[Math.floor(Math.random() * adventures.length)];
-
+    if (isNaomi(target) || isBecca(target) || isRosalia(target)) {
+      const fileList = await getFileList<Adventure[]>(target, "adventures");
+      const file = fileList[Math.floor(Math.random() * fileList.length)];
+      const { fileName, game } = file;
       const embed = new EmbedBuilder();
-      embed.setTitle(adventure.game);
-      embed.setImage(`https://cdn.naomi.lgbt/games/${adventure.fileName}`);
-      embed.setFooter({
-        text: `Join our server: https://chat.naomi.lgbt`,
-        iconURL: `https://cdn.nhcarrigan.com/profile.png`,
-      });
-
-      return embed;
-    }
-
-    if (isBecca(target) || isRosalia(target)) {
-      const fileList = await getFileList(`${target}/games`);
-      const fileName = fileList[Math.floor(Math.random() * fileList.length)];
-      const embed = new EmbedBuilder();
-      embed.setTitle(
-        fileName
-          .split("-")
-          .map((el) => el[0].toUpperCase() + el.slice(1))
-          .join(" ")
-      );
+      embed.setTitle(game);
       embed.setImage(`https://cdn.naomi.lgbt/${target}/games/${fileName}`);
       embed.setFooter({
         text: `Join our server: https://chat.naomi.lgbt`,

@@ -44,3 +44,12 @@ export const isBeccalia = (target: Target): target is "beccalia" =>
  */
 export const isNovas = (target: Target): target is "novas" =>
   target === "novas";
+
+/**
+ * Confirms that the response is an array of strings.
+ *
+ * @param {unknown[]} response The response to test.
+ * @returns {boolean} If the response is an array of strings.
+ */
+export const isStringArray = (response: unknown[]): response is string[] =>
+  response.every((item) => typeof item === "string");
