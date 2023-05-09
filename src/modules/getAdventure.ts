@@ -20,9 +20,10 @@ export const getAdventure = async (target: Target): Promise<EmbedBuilder> => {
     if (isNaomi(target) || isBecca(target) || isRosalia(target)) {
       const fileList = await getFileList<Adventure[]>(target, "adventures");
       const file = fileList[Math.floor(Math.random() * fileList.length)];
-      const { fileName, game } = file;
+      const { fileName, game, description } = file;
       const embed = new EmbedBuilder();
       embed.setTitle(game);
+      embed.setDescription(description);
       embed.setImage(`https://cdn.naomi.lgbt/${target}/games/${fileName}`);
       embed.setFooter({
         text: `Join our server: https://chat.naomi.lgbt`,
