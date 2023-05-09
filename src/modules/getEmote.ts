@@ -20,11 +20,15 @@ export const getEmote = async (target: Target): Promise<EmbedBuilder> => {
     if (isNaomi(target) || isBecca(target)) {
       const fileList = await getFileList<Emote[]>(target, "emotes");
       const file = fileList[Math.floor(Math.random() * fileList.length)];
-      const { fileName, name } = file;
+      const { fileName, name, description } = file;
       const embed = new EmbedBuilder();
       embed.setTitle(name);
+      embed.setDescription(description);
       if (target === "becca") {
-        embed.setDescription(`Art by [Starfazers](https://starfazers.art)`);
+        embed.addFields({
+          name: "Art By:",
+          value: `[Starfazers](https://starfazers.art)`,
+        });
       }
       embed.setImage(`https://cdn.naomi.lgbt/${target}/emotes/${fileName}`);
       embed.setFooter({

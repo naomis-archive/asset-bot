@@ -29,7 +29,7 @@ export const getPortrait = async (target: Target): Promise<EmbedBuilder> => {
 
       const embed = new EmbedBuilder();
       embed.setTitle(portrait.name);
-      embed.setDescription(portrait.alt);
+      embed.setDescription(portrait.description);
       embed.setImage(
         `https://cdn.naomi.lgbt/${target}/art/${portrait.fileName.replace(
           /\s/g,
