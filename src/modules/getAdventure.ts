@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "@discordjs/builders";
+import { EmbedBuilder } from "discord.js";
 
 import { Adventure } from "../interfaces/Adventure";
 import { Target } from "../interfaces/Target";

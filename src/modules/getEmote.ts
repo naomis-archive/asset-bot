@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "@discordjs/builders";
+import { EmbedBuilder } from "discord.js";
 
 import { Emote } from "../interfaces/Emote";
 import { Target } from "../interfaces/Target";

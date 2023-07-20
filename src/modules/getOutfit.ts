@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "@discordjs/builders";
+import { EmbedBuilder } from "discord.js";
 
 import { Outfit } from "../interfaces/Outfit";
 import { errorHandler } from "../utils/errorHandler";
