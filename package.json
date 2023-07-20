@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "rm -rf prod",
     "build": "tsc",
-    "lint": "eslint src --max-warnings 0",
+    "lint": "eslint src --max-warnings 0 && prettier src --check",
     "start": "node -r dotenv/config prod/index.js",
     "test": "echo 'no tests yet'"
   },
@@ -28,7 +28,6 @@
     "@nhcarrigan/eslint-config": "1.1.3",
     "@nhcarrigan/prettier-config": "1.0.1",
     "@nhcarrigan/typescript-config": "1.0.1",
-    "@types/node-schedule": "2.1.0",
     "@types/uuid": "9.0.2",
     "eslint": "8.45.0",
     "prettier": "2.8.8",
@@ -37,7 +36,6 @@
   "dependencies": {
     "discord.js": "14.11.0",
     "dotenv": "16.3.1",
-    "node-schedule": "2.1.1",
     "uuid": "9.0.0",
     "winston": "3.10.0"
   }
