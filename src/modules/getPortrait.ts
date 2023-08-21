@@ -4,6 +4,7 @@ import { Portrait } from "../interfaces/Portrait";
 import { Target } from "../interfaces/Target";
 import { errorHandler } from "../utils/errorHandler";
 import { getFileList } from "../utils/getFileList";
+import { getRandomValue } from "../utils/getRandomValue";
 import { isBecca, isBeccalia, isNaomi, isRosalia } from "../utils/typeGuards";
 
 import { defaultEmbed } from "./defaultEmbed";
@@ -24,8 +25,7 @@ export const getPortrait = async (target: Target): Promise<EmbedBuilder> => {
       isBeccalia(target)
     ) {
       const portraitData = await getFileList<Portrait[]>(target, "portraits");
-      const portrait =
-        portraitData[Math.floor(Math.random() * portraitData.length)];
+      const portrait = getRandomValue(portraitData);
 
       const embed = new EmbedBuilder();
       embed.setTitle(portrait.name);

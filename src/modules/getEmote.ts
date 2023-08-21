@@ -4,6 +4,7 @@ import { Emote } from "../interfaces/Emote";
 import { Target } from "../interfaces/Target";
 import { errorHandler } from "../utils/errorHandler";
 import { getFileList } from "../utils/getFileList";
+import { getRandomValue } from "../utils/getRandomValue";
 import { isBecca, isNaomi } from "../utils/typeGuards";
 
 import { defaultEmbed } from "./defaultEmbed";
@@ -19,7 +20,7 @@ export const getEmote = async (target: Target): Promise<EmbedBuilder> => {
   try {
     if (isNaomi(target) || isBecca(target)) {
       const fileList = await getFileList<Emote[]>(target, "emotes");
-      const file = fileList[Math.floor(Math.random() * fileList.length)];
+      const file = getRandomValue(fileList);
       const { fileName, name, description } = file;
       const embed = new EmbedBuilder();
       embed.setTitle(name);

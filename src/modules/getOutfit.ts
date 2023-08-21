@@ -3,6 +3,7 @@ import { EmbedBuilder } from "discord.js";
 import { Outfit } from "../interfaces/Outfit";
 import { errorHandler } from "../utils/errorHandler";
 import { getFileList } from "../utils/getFileList";
+import { getRandomValue } from "../utils/getRandomValue";
 
 import { errorEmbed } from "./errorEmbed";
 
@@ -14,7 +15,7 @@ import { errorEmbed } from "./errorEmbed";
 export const getOutfit = async (): Promise<EmbedBuilder> => {
   try {
     const fileData = await getFileList<Outfit[]>("naomi", "outfits");
-    const outfit = fileData[Math.floor(Math.random() * fileData.length)];
+    const outfit = getRandomValue(fileData);
 
     const embed = new EmbedBuilder();
     embed.setTitle(outfit.name);

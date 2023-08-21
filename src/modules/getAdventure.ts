@@ -4,6 +4,7 @@ import { Adventure } from "../interfaces/Adventure";
 import { Target } from "../interfaces/Target";
 import { errorHandler } from "../utils/errorHandler";
 import { getFileList } from "../utils/getFileList";
+import { getRandomValue } from "../utils/getRandomValue";
 import { isBecca, isNaomi, isRosalia } from "../utils/typeGuards";
 
 import { defaultEmbed } from "./defaultEmbed";
@@ -19,7 +20,7 @@ export const getAdventure = async (target: Target): Promise<EmbedBuilder> => {
   try {
     if (isNaomi(target) || isBecca(target) || isRosalia(target)) {
       const fileList = await getFileList<Adventure[]>(target, "adventures");
-      const file = fileList[Math.floor(Math.random() * fileList.length)];
+      const file = getRandomValue(fileList);
       const { fileName, game, description } = file;
       const embed = new EmbedBuilder();
       embed.setTitle(game);
