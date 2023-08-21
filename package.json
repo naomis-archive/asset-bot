@@ -36,6 +36,7 @@
   "dependencies": {
     "discord.js": "14.13.0",
     "dotenv": "16.3.1",
+    "random": "4.1.0",
     "uuid": "9.0.0",
     "winston": "3.10.0"
   }

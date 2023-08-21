@@ -4,6 +4,7 @@ import { Pose } from "../interfaces/Pose";
 import { Target } from "../interfaces/Target";
 import { errorHandler } from "../utils/errorHandler";
 import { getFileList } from "../utils/getFileList";
+import { getRandomValue } from "../utils/getRandomValue";
 
 import { defaultEmbed } from "./defaultEmbed";
 import { errorEmbed } from "./errorEmbed";
@@ -17,7 +18,7 @@ import { errorEmbed } from "./errorEmbed";
 export const getKoikatsu = async (target: Target): Promise<EmbedBuilder> => {
   try {
     const fileList = await getFileList<Pose[]>(target, "poses");
-    const file = fileList[Math.floor(Math.random() * fileList.length)];
+    const file = getRandomValue(fileList);
     const { fileName, name, description } = file;
     const embed = new EmbedBuilder();
     embed.setTitle(name);
